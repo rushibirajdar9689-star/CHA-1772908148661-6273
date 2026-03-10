@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NagarSeva Admin Dashboard</title>
+
+<link rel="stylesheet" href="admin.html">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+
+<div class="logo">
+<h2>NagarSeva</h2>
+<p>Admin Panel</p>
+</div>
+
+<ul class="menu">
+<li class="active">Dashboard</li>
+<li>All Complaints</li>
+<li>Departments</li>
+<li>Users</li>
+<li>Analytics</li>
+</ul>
+
+<div class="logout">
+Admin User
+<br>
+<button>Logout</button>
+</div>
+
+</div>
+
+
+<!-- Main Content -->
+<div class="main">
+
+<h1>Admin Dashboard</h1>
+
+<!-- Cards -->
+<div class="cards">
+
+<div class="card">
+<h3>Total Complaints</h3>
+<h2>5</h2>
+<p class="green">↑12% this week</p>
+</div>
+
+<div class="card">
+<h3>Pending</h3>
+<h2>4</h2>
+</div>
+
+<div class="card">
+<h3>Resolved</h3>
+<h2>1</h2>
+<p class="green">↑20% rate</p>
+</div>
+
+<div class="card">
+<h3>Critical</h3>
+<h2>2</h2>
+</div>
+
+</div>
+
+
+<!-- Charts -->
+<div class="charts">
+
+<div class="chart-card">
+<h3>Department Workload</h3>
+<canvas id="barChart"></canvas>
+</div>
+
+<div class="chart-card">
+<h3>Status Distribution</h3>
+<canvas id="pieChart"></canvas>
+</div>
+
+</div>
+
+
+<!-- Table -->
+<div class="table-card">
+
+<h3>Recent Complaints</h3>
+
+<table>
+
+<thead>
+<tr>
+<th>ID</th>
+<th>Title</th>
+<th>Dept</th>
+<th>Priority</th>
+<th>Status</th>
+<th>Date</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>CMP-1001</td>
+<td>Low water pressure in Sector 15</td>
+<td>Water</td>
+<td class="high">High</td>
+<td class="progress">In Progress</td>
+<td>3/5/2026</td>
+</tr>
+
+<tr>
+<td>CMP-1002</td>
+<td>Garbage not collected for a week</td>
+<td>Sanitation</td>
+<td>Medium</td>
+<td class="submitted">Submitted</td>
+<td>3/8/2026</td>
+</tr>
+
+<tr>
+<td>CMP-1003</td>
+<td>Frequent power outages</td>
+<td>Electricity</td>
+<td class="critical">Critical</td>
+<td class="review">Under Review</td>
+<td>3/7/2026</td>
+</tr>
+
+<tr>
+<td>CMP-1004</td>
+<td>Large pothole on main highway</td>
+<td>Roads</td>
+<td class="critical">Critical</td>
+<td class="complete">Completed</td>
+<td>3/1/2026</td>
+</tr>
+
+<tr>
+<td>CMP-1005</td>
+<td>Incorrect property tax assessment</td>
+<td>Property Tax</td>
+<td>Medium</td>
+<td class="review">Under Review</td>
+<td>3/6/2026</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+
+<script>
+
+const barCtx=document.getElementById('barChart');
+
+new Chart(barCtx,{
+type:'bar',
+data:{
+labels:['Water','Electricity','Sanitation','Property Tax','Roads'],
+datasets:[
+{
+label:'Pending',
+data:[1,1,1,1,0],
+backgroundColor:'#f39c12'
+},
+{
+label:'Resolved',
+data:[0,0,0,0,1],
+backgroundColor:'#27ae60'
+}
+]
+}
+});
+
+
+const pieCtx=document.getElementById('pieChart');
+
+new Chart(pieCtx,{
+type:'doughnut',
+data:{
+labels:['Submitted','Under Review','In Progress','Completed'],
+datasets:[{
+data:[1,2,1,1],
+backgroundColor:[
+'#3498db',
+'#f39c12',
+'#9b59b6',
+'#2ecc71'
+]
+}]
+}
+});
+
+</script>
+
+</body>
+</html>

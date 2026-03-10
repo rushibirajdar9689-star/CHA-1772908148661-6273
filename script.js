@@ -24,6 +24,7 @@ update();
 
 });
 
+
 // dash
 
 // Sidebar active menu animation
@@ -58,3 +59,5 @@ bell.addEventListener("mouseleave",()=>{
 bell.style.transform="rotate(0deg)"
 
 })
+
+ 9fa6ed55d6871ed8ba7210602deb0d85da4f0761
