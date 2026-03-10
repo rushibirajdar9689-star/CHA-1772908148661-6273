@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body{
 margin:0;
 font-family:Arial, Helvetica, sans-serif;
@@ -193,4 +194,201 @@ color:#2563eb;
 .progress{
 background:#eadcf8;
 color:#7c3aed;
+=======
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+background:#f4f6f9;
+}
+
+.container{
+display:flex;
+height:100vh;
+}
+
+/* Sidebar */
+
+.sidebar{
+width:220px;
+background:#0f2749;
+color:white;
+padding:20px;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+}
+
+.sidebar ul{
+list-style:none;
+padding:0;
+}
+
+.sidebar li{
+padding:10px;
+cursor:pointer;
+opacity:.8;
+}
+
+.sidebar li.active{
+background:#1e3f6f;
+border-radius:6px;
+opacity:1;
+}
+
+.user{
+margin-top:auto;
+}
+
+.user button{
+padding:6px 10px;
+border:none;
+background:#eee;
+cursor:pointer;
+}
+
+/* Main */
+
+.main{
+flex:1;
+padding:30px;
+}
+
+.search-box{
+display:flex;
+margin-bottom:20px;
+}
+
+.search-box input{
+flex:1;
+padding:10px;
+border:1px solid #ccc;
+border-radius:6px 0 0 6px;
+}
+
+.search-box button{
+padding:10px 15px;
+border:none;
+background:#1e3f6f;
+color:white;
+border-radius:0 6px 6px 0;
+cursor:pointer;
+}
+
+/* Cards */
+
+.card{
+background:white;
+padding:20px;
+margin-bottom:20px;
+border-radius:10px;
+box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+
+.card-header{
+display:flex;
+gap:10px;
+align-items:center;
+}
+
+.id{
+font-weight:bold;
+}
+
+.status{
+padding:3px 10px;
+border-radius:10px;
+font-size:12px;
+}
+
+.submitted{
+background:#d8e6ff;
+color:#2c5be3;
+}
+
+.progress{
+background:#edd8ff;
+color:#8a2be2;
+}
+
+/* Progress */
+
+.progress{
+display:flex;
+align-items:center;
+margin:20px 0;
+}
+
+.step{
+width:20px;
+height:20px;
+border-radius:50%;
+border:3px solid #ccc;
+}
+
+.step.active{
+border-color:orange;
+background:orange;
+}
+
+.line{
+flex:1;
+height:3px;
+background:#ccc;
+}
+
+.line.active{
+background:orange;
+}
+
+.logs{
+padding-left:18px;
+}
+/* Table Card */
+
+.table-card{
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Table */
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+thead{
+background:#f3f5f7;
+}
+
+th, td{
+text-align:left;
+padding:15px;
+border-bottom:1px solid #eee;
+}
+
+tbody tr:hover{
+background:#fafafa;
+}
+
+/* Status Badges */
+
+.badge{
+padding:6px 12px;
+border-radius:20px;
+font-size:13px;
+font-weight:500;
+}
+
+.submitted{
+background:#dbeafe;
+color:#2563eb;
+}
+
+.progress{
+background:#eadcf8;
+color:#7c3aed;
+>>>>>>> db93cf99883e8ca345a09e4a4c8fb4a11b7ccf28
 }
