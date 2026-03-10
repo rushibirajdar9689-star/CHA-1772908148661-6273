@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+// service selection animation
 // service selection animation
 const fileInput = document.getElementById("fileUpload")
 
@@ -20,27 +20,30 @@ service.classList.add("active")
 
 })
 
-=======
-// service selection animation
-const fileInput = document.getElementById("fileUpload")
-
-fileInput.addEventListener("change",()=>{
-
-alert("File uploaded: " + fileInput.files[0].name)
-
 })
 
-const services = document.querySelectorAll(".service")
 
-services.forEach(service=>{
+const lat = document.getElementById("lat").innerText;
+const lng = document.getElementById("lng").innerText;
 
-service.addEventListener("click",()=>{
+fetch("/addComplaint",{
 
-services.forEach(s=>s.classList.remove("active"))
+method:"POST",
 
-service.classList.add("active")
+headers:{
+"Content-Type":"application/json"
+},
 
+body:JSON.stringify({
+title:"Water leakage",
+latitude:lat,
+longitude:lng
 })
 
->>>>>>> db93cf99883e8ca345a09e4a4c8fb4a11b7ccf28
-})
+});
+
+var map = L.map('map').setView([latitude, longitude], 16);
+
+L.marker([latitude, longitude]).addTo(map)
+.bindPopup("Complaint Location")
+.openPopup();
