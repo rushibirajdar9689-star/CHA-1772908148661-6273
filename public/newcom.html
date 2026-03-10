@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NagarSeva - New Complaint</title>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI, Arial;
+}
+
+body{
+background:#f4f6fa;
+}
+
+.container{
+display:flex;
+height:100vh;
+}
+
+/* Sidebar */
+
+.sidebar{
+width:240px;
+background:#0f2545;
+color:white;
+padding:25px 20px;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+}
+
+.logo{
+font-size:18px;
+font-weight:600;
+margin-bottom:25px;
+}
+
+.sidebar ul{
+list-style:none;
+}
+
+.sidebar li{
+display:flex;
+align-items:center;
+gap:10px;
+padding:12px;
+border-radius:8px;
+margin-bottom:10px;
+cursor:pointer;
+}
+
+.sidebar li svg{
+color:#f59e0b;
+filter:drop-shadow(2px 2px 3px rgba(0,0,0,0.4));
+}
+
+.sidebar li.active{
+background:#1e3a6d;
+}
+
+.sidebar li:hover{
+background:#1e3a6d;
+}
+
+.user{
+font-size:14px;
+}
+
+/* Main */
+
+.main{
+flex:1;
+padding:30px 40px;
+}
+
+/* Header */
+
+.topbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+}
+
+.top-icons{
+display:flex;
+align-items:center;
+gap:20px;
+}
+
+.top-icons svg{
+color:#374151;
+filter:drop-shadow(1px 2px 3px rgba(0,0,0,0.3));
+}
+
+.profile{
+width:36px;
+height:36px;
+background:#1e3a6d;
+color:white;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
+}
+
+/* Title */
+
+.title{
+font-size:26px;
+font-weight:600;
+margin-bottom:5px;
+}
+
+.subtitle{
+color:#6b7280;
+margin-bottom:25px;
+}
+
+/* Service Cards */
+
+.services{
+display:flex;
+gap:15px;
+margin-bottom:25px;
+}
+
+.service{
+flex:1;
+background:white;
+border:1px solid #e5e7eb;
+border-radius:10px;
+padding:18px;
+text-align:center;
+cursor:pointer;
+transition:0.25s;
+}
+
+.service svg{
+width:30px;
+height:30px;
+padding:6px;
+border-radius:8px;
+color:white;
+box-shadow:0 5px 10px rgba(0,0,0,0.25);
+margin-bottom:6px;
+}
+
+/* Individual icon colors */
+
+.water svg{
+background:linear-gradient(135deg,#3b82f6,#60a5fa);
+}
+
+.electric svg{
+background:linear-gradient(135deg,#facc15,#f59e0b);
+}
+
+.sanitation svg{
+background:linear-gradient(135deg,#22c55e,#16a34a);
+}
+
+.garbage svg{
+background:linear-gradient(135deg,#14b8a6,#0d9488);
+}
+
+.road svg{
+background:linear-gradient(135deg,#ef4444,#dc2626);
+}
+
+/* Hover 3D effect */
+
+.service:hover{
+transform:translateY(-6px);
+box-shadow:0 10px 18px rgba(0,0,0,0.25);
+border-color:#f59e0b;
+}
+
+/* Form */
+
+.form-card{
+background:white;
+padding:25px;
+border-radius:12px;
+border:1px solid #e5e7eb;
+max-width:700px;
+box-shadow:0 6px 12px rgba(0,0,0,0.08);
+}
+
+label{
+display:block;
+margin-top:15px;
+margin-bottom:6px;
+font-weight:500;
+}
+
+input, textarea, select{
+width:100%;
+padding:10px;
+border:1px solid #d1d5db;
+border-radius:8px;
+font-size:14px;
+}
+
+textarea{
+height:100px;
+}
+
+/* Buttons */
+
+.buttons{
+margin-top:20px;
+}
+
+.submit{
+background:linear-gradient(135deg,#f59e0b,#fb923c);
+border:none;
+color:white;
+padding:10px 20px;
+border-radius:8px;
+cursor:pointer;
+box-shadow:0 4px 10px rgba(0,0,0,0.25);
+}
+
+.cancel{
+background:#e5e7eb;
+border:none;
+padding:10px 18px;
+border-radius:8px;
+margin-left:10px;
+cursor:pointer;
+}
+
+.submit:hover{
+transform:translateY(-2px);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- Sidebar -->
+
+<div class="sidebar">
+
+<div>
+
+<div class="logo">🛡 NagarSeva<br><small>Citizen Portal</small></div>
+
+<ul>
+<li><i data-lucide="layout-dashboard"></i>Dashboard</li>
+<li><i data-lucide="file-text"></i>My Complaints</li>
+<li class="active"><i data-lucide="plus-circle"></i>New Complaint</li>
+<li><i data-lucide="search"></i>Track Status</li>
+</ul>
+
+</div>
+
+<div class="user">
+Rahul Sharma<br>
+<small>nikumbhar0519@gmail.com</small>
+<br><br>
+<i data-lucide="log-out"></i> Logout
+</div>
+
+</div>
+
+<!-- Main -->
+
+<div class="main">
+
+<div class="topbar">
+
+<div>
+<b>NagarSeva — Unified Governance Portal</b>
+</div>
+
+<div class="top-icons">
+<i data-lucide="bell"></i>
+<div class="profile">R</div>
+</div>
+
+</div>
+
+<div class="title">File New Complaint</div>
+<div class="subtitle">
+Describe your civic issue and we'll route it to the right department.
+</div>
+
+<!-- Services -->
+
+<div class="services">
+
+<div class="service water">
+<i data-lucide="droplet"></i>
+<div>Water Supply</div>
+</div>
+
+<div class="service electric">
+<i data-lucide="zap"></i>
+<div>Electricity</div>
+</div>
+
+<div class="service sanitation">
+<i data-lucide="spray-can"></i>
+<div>Sanitation</div>
+</div>
+
+<div class="service garbage">
+<i data-lucide="trash"></i>
+<div>Garbage</div>
+</div>
+
+<div class="service road">
+<i data-lucide="construction"></i>
+<div>Roads & Infrastructure</div>
+</div>
+
+</div>
+
+<!-- Form -->
+
+<div class="form-card">
+
+<label>Complaint Title *</label>
+<input type="text" placeholder="e.g., Low water pressure in Sector 15">
+
+<label>Description *</label>
+<textarea placeholder="Describe the issue in detail..."></textarea>
+
+<label>Location *</label>
+<input type="text" placeholder="e.g., Block C, Sector 15, Near Park">
+
+
+
+<div class="buttons">
+<button class="submit">Submit Complaint</button>
+<button class="cancel">Cancel</button>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+lucide.createIcons();
+</script>
+
+</body>
+</html>

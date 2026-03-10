@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Track Complaint</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f6f9;
+margin:0;
+padding:30px;
+}
+
+.card{
+background:white;
+padding:30px;
+border-radius:14px;
+margin-bottom:30px;
+box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+
+.header{
+display:flex;
+align-items:center;
+gap:12px;
+margin-bottom:10px;
+}
+
+.cid{
+color:#64748b;
+font-weight:600;
+}
+
+.badge{
+padding:5px 12px;
+border-radius:20px;
+font-size:13px;
+background:#ede9fe;
+color:#7c3aed;
+}
+
+.badge.submitted{
+background:#dbeafe;
+color:#2563eb;
+}
+
+.title{
+font-size:22px;
+font-weight:700;
+margin-top:10px;
+}
+
+.meta{
+color:#64748b;
+margin-bottom:20px;
+}
+
+.progressbar{
+display:flex;
+justify-content:space-between;
+position:relative;
+margin-top:20px;
+}
+
+.progressbar::before{
+content:"";
+position:absolute;
+top:16px;
+left:0;
+width:100%;
+height:4px;
+background:#d6d6d6;
+z-index:0;
+}
+
+.step{
+flex:1;
+text-align:center;
+position:relative;
+}
+
+.circle{
+width:32px;
+height:32px;
+border-radius:50%;
+border:3px solid #cbd5e1;
+background:white;
+display:flex;
+align-items:center;
+justify-content:center;
+margin:auto;
+z-index:1;
+position:relative;
+}
+
+.circle.active{
+border-color:#f59e0b;
+color:#f59e0b;
+}
+
+.line-active{
+position:absolute;
+top:16px;
+left:0;
+height:4px;
+background:#f59e0b;
+z-index:0;
+}
+
+.step p{
+margin-top:8px;
+color:#64748b;
+font-size:14px;
+}
+
+.timeline{
+margin-top:25px;
+border-left:2px solid #e2e8f0;
+padding-left:20px;
+}
+
+.event{
+margin-bottom:18px;
+position:relative;
+}
+
+.event::before{
+content:"";
+width:10px;
+height:10px;
+background:#f59e0b;
+border-radius:50%;
+position:absolute;
+left:-26px;
+top:5px;
+}
+
+.time{
+color:#64748b;
+font-size:14px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>Track Complaint Progress</h2>
+
+<div id="tracker"></div>
+
+<script>
+
+async function loadTracking(){
+
+const user = localStorage.getItem("username")
+
+const res = await fetch("http://localhost:3000/getComplaints/"+user)
+
+const complaints = await res.json()
+
+const tracker=document.getElementById("tracker")
+
+tracker.innerHTML=""
+
+complaints.forEach(c=>{
+
+let s1="",s2="",s3="",s4=""
+
+if(c.status==="Submitted"){
+s1="active"
+}
+
+if(c.status==="Review"){
+s1="active"
+s2="active"
+}
+
+if(c.status==="In Progress"){
+s1="active"
+s2="active"
+s3="active"
+}
+
+if(c.status==="Completed"){
+s1="active"
+s2="active"
+s3="active"
+s4="active"
+}
+
+let badgeClass="badge"
+
+if(c.status==="Submitted") badgeClass="badge submitted"
+
+tracker.innerHTML+=`
+
+<div class="card">
+
+<div class="header">
+
+<div class="cid">${c.complaintId}</div>
+
+<div class="${badgeClass}">
+${c.status}
+</div>
+
+</div>
+
+<div class="title">${c.title}</div>
+
+<div class="meta">
+${c.location || ""} • ${c.category || ""}
+</div>
+
+<div class="progressbar">
+
+<div class="step">
+<div class="circle ${s1}">
+${s1 ? '<i class="fa-solid fa-check"></i>' : ''}
+</div>
+<p>Submitted</p>
+</div>
+
+<div class="step">
+<div class="circle ${s2}">
+${s2 ? '<i class="fa-solid fa-check"></i>' : ''}
+</div>
+<p>Review</p>
+</div>
+
+<div class="step">
+<div class="circle ${s3}">
+${s3 ? '<i class="fa-solid fa-check"></i>' : ''}
+</div>
+<p>In Progress</p>
+</div>
+
+<div class="step">
+<div class="circle ${s4}">
+${s4 ? '<i class="fa-solid fa-check"></i>' : ''}
+</div>
+<p>Completed</p>
+</div>
+
+</div>
+
+<div class="timeline">
+
+<div class="event">
+Complaint registered
+<div class="time">${new Date(c.createdAt).toLocaleString()}</div>
+</div>
+
+${s2?`<div class="event">
+Assigned to department
+<div class="time">${new Date().toLocaleString()}</div>
+</div>`:""}
+
+${s3?`<div class="event">
+Team dispatched
+<div class="time">${new Date().toLocaleString()}</div>
+</div>`:""}
+
+${s4?`<div class="event">
+Issue resolved
+<div class="time">${new Date().toLocaleString()}</div>
+</div>`:""}
+
+</div>
+
+</div>
+`
+
+})
+
+}
+
+loadTracking()
+
+setInterval(loadTracking,5000)
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NagarSeva Dashboard</title>
+
+<link rel="stylesheet" href="dash.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<div class="logo">
+
+<i class="fa-solid fa-shield"></i>
+<h2>NagarSeva</h2>
+<p>Citizen Portal</p>
+
+</div>
+
+<div class="menu">
+
+<h4>NAVIGATION</h4>
+
+<a class="active">
+<i class="fa-solid fa-table-columns"></i>
+Dashboard
+</a>
+
+<a href="mycom.html">
+<i class="fa-solid fa-file"></i>
+My Complaints
+</a>
+
+<a href="complait.html">
+<i class="fa-solid fa-plus"></i>
+New Complaint
+</a>
+
+<a href="track.html">
+<i class="fa-solid fa-magnifying-glass"></i>
+Track Status
+</a>
+
+</div>
+
+<div class="user">
+
+<h3 id="sidebarUser"></h3>
+
+<p id="sidebarEmail"></p>
+
+<button class="logout" onclick="logout()">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+Logout
+
+</button>
+
+</div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main">
+
+<div class="navbar">
+
+<h2>NagarSeva — Unified Governance Portal</h2>
+
+<div class="nav-right">
+
+<i class="fa-solid fa-bell"></i>
+
+<div class="avatar" id="avatarLetter">
+U
+</div>
+
+</div>
+
+</div>
+
+<!-- WELCOME -->
+
+<div class="welcome">
+
+<div>
+
+<h1 id="welcomeUser">Welcome</h1>
+
+<p>Here's an overview of your civic requests.</p>
+
+</div>
+
+<a href="complait.html">
+<button class="new-btn">
++ New Complaint
+</button>
+</a>
+
+</div>
+
+
+<!-- RECENT COMPLAINTS -->
+
+<div class="recent">
+
+<h3>Recent Complaints</h3>
+
+<div id="complaintList">
+
+<p>No complaints yet</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+/* LOAD USER INFO */
+
+const username = localStorage.getItem("username")
+const email = localStorage.getItem("useremail")
+
+if(username){
+
+document.getElementById("sidebarUser").innerText = username
+
+document.getElementById("welcomeUser").innerText =
+"Welcome, " + username
+
+document.getElementById("avatarLetter").innerText =
+username.charAt(0)
+
+}
+
+if(email){
+
+document.getElementById("sidebarEmail").innerText = email
+
+}
+
+
+/* LOGOUT */
+
+function logout(){
+
+localStorage.clear()
+
+window.location.href = "login.html"
+
+}
+
+
+/* LOAD COMPLAINTS */
+
+async function loadComplaints(){
+
+const user = localStorage.getItem("username")
+
+const response = await fetch(
+"http://localhost:3000/getComplaints/" + user
+)
+
+const complaints = await response.json()
+
+const container = document.getElementById("complaintList")
+
+container.innerHTML = ""
+
+if(complaints.length === 0){
+
+container.innerHTML = "<p>No complaints submitted yet</p>"
+
+return
+
+}
+
+complaints.forEach(c=>{
+
+container.innerHTML += `
+
+<div class="complaint">
+
+<div>
+
+<span class="id">CMP-${c._id.slice(-4)}</span>
+
+<span class="status submitted">
+Submitted
+</span>
+
+<h4>${c.title}</h4>
+
+<p>${c.location}</p>
+
+</div>
+
+<span class="date">
+
+${new Date(c.date).toLocaleDateString()}
+
+</span>
+
+</div>
+
+`
+
+})
+
+}
+
+loadComplaints()
+
+</script>
+
+</body>
+</html>

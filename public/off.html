@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Officer Dashboard</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI, Arial;
+}
+
+body{
+background:#f5f7fb;
+}
+
+/* Layout */
+
+.container{
+display:flex;
+height:100vh;
+}
+
+/* Sidebar */
+
+.sidebar{
+width:240px;
+background:#0f2545;
+color:white;
+padding:25px 20px;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+}
+
+.logo{
+font-size:20px;
+font-weight:600;
+margin-bottom:30px;
+}
+
+.sidebar ul{
+list-style:none;
+}
+
+.sidebar li{
+padding:12px;
+margin-bottom:10px;
+border-radius:8px;
+cursor:pointer;
+}
+
+.sidebar li.active{
+background:#1e3a6d;
+}
+
+.sidebar li:hover{
+background:#1e3a6d;
+}
+
+.user{
+font-size:14px;
+}
+
+/* Main */
+
+.main{
+flex:1;
+padding:30px;
+}
+
+/* Header */
+
+.header{
+font-size:20px;
+margin-bottom:30px;
+}
+
+/* Cards */
+
+.cards{
+display:flex;
+gap:20px;
+margin-bottom:30px;
+}
+
+.card{
+background:white;
+padding:20px;
+flex:1;
+border-radius:12px;
+box-shadow:0 2px 5px rgba(0,0,0,0.08);
+}
+
+.card h4{
+color:#777;
+margin-bottom:10px;
+}
+
+.card h2{
+font-size:32px;
+}
+
+/* Table */
+
+.table-card{
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:0 2px 5px rgba(0,0,0,0.08);
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th, td{
+text-align:left;
+padding:15px;
+border-bottom:1px solid #eee;
+}
+
+th{
+color:#666;
+font-weight:500;
+}
+
+/* Status */
+
+.badge{
+padding:5px 12px;
+border-radius:20px;
+font-size:13px;
+}
+
+.submitted{
+background:#dbeafe;
+color:#2563eb;
+}
+
+.progress{
+background:#eadcf8;
+color:#7c3aed;
+}
+
+/* Priority */
+
+.high{
+color:#f97316;
+font-weight:600;
+}
+
+/* Dropdown */
+
+select{
+padding:8px;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- Sidebar -->
+
+<div class="sidebar">
+
+<div>
+<div class="logo">NagarSeva<br><small>Officer Panel</small></div>
+
+<ul>
+<a href="off.html"><li class="active">Dashboard</li></a>
+<a href="offdash.html"><li>Department</li></a>
+</ul>
+</div>
+
+<div class="user">
+Priya Patel<br>
+<small>demo@officer.gov</small>
+<br><br>
+Logout
+</div>
+
+</div>
+
+<!-- Main -->
+
+<div class="main">
+
+<div class="header">
+<b>Officer Dashboard</b><br>
+<small>Department: water • Managing complaints</small>
+</div>
+
+<!-- Stats -->
+
+<div class="cards">
+
+<div class="card">
+<h4>TOTAL</h4>
+<h2>2</h2>
+</div>
+
+<div class="card">
+<h4>PENDING</h4>
+<h2>1</h2>
+</div>
+
+<div class="card">
+<h4>IN PROGRESS</h4>
+<h2>1</h2>
+</div>
+
+<div class="card">
+<h4>RESOLVED</h4>
+<h2>0</h2>
+</div>
+
+</div>
+
+<!-- Table -->
+
+<div class="table-card">
+
+<h3 style="margin-bottom:20px;">Department Complaints</h3>
+
+<table>
+
+<thead>
+<tr>
+<th>ID</th>
+<th>Title</th>
+<th>Citizen</th>
+<th>Priority</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>CMP-1006</td>
+<td>not coming</td>
+<td>Rahul Sharma</td>
+<td>Medium</td>
+<td><span class="badge submitted">Submitted</span></td>
+<td>
+<select>
+<option>Submitted</option>
+<option>In Progress</option>
+<option>Resolved</option>
+</select>
+</td>
+</tr>
+
+<tr>
+<td>CMP-1001</td>
+<td>Low water pressure in Sector 15</td>
+<td>Rahul Sharma</td>
+<td class="high">High</td>
+<td><span class="badge progress">In Progress</span></td>
+<td>
+<select>
+<option>In Progress</option>
+<option>Resolved</option>
+</select>
+</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

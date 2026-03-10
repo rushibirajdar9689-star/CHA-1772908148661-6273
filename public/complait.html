@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>New Complaint</title>
+
+<link rel="stylesheet" href="comp.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- MAP LIBRARY -->
+
+<link rel="stylesheet"
+href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<style>
+
+#map{
+height:220px;
+width:100%;
+margin-top:10px;
+border-radius:8px;
+}
+
+.location-btn{
+margin-top:10px;
+padding:8px 12px;
+background:#ff7a00;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+.coords{
+font-size:13px;
+margin-top:6px;
+color:#555;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<div class="logo">
+<i class="fa-solid fa-shield"></i>
+<h2>NagarSeva</h2>
+<p>Citizen Portal</p>
+</div>
+
+<div class="menu">
+
+<h4>NAVIGATION</h4>
+
+<a href="dashboard.html">
+<i class="fa-solid fa-table-columns"></i>
+Dashboard
+</a>
+
+<a href="mycom.html">
+<i class="fa-solid fa-file"></i>
+My Complaints
+</a>
+
+<a class="active" href="complait.html">
+<i class="fa-solid fa-plus"></i>
+New Complaint
+</a>
+
+<a>
+<i class="fa-solid fa-magnifying-glass"></i>
+Track Status
+</a>
+
+</div>
+
+</div>
+                                                                    
+<!-- MAIN -->
+
+<div class="main">
+
+<div class="navbar">
+<h2>NagarSeva — Unified Governance Portal</h2>
+
+<div class="profile">
+<div class="avatar">R</div>
+</div>
+</div>
+
+<div class="title">
+
+<h1>File New Complaint</h1>
+
+<p>Describe your civic issue and we'll route it to the right department.</p>
+
+</div>
+
+<h3>Select Service Type *</h3>
+
+<div class="services">
+
+<div class="service">
+<i class="fa-solid fa-droplet"></i>
+<p>Water Supply</p>
+</div>
+
+<div class="service">
+<i class="fa-solid fa-bolt"></i>
+<p>Electricity</p>
+</div>
+
+<div class="service">
+<i class="fa-solid fa-trash"></i>
+<p>Sanitation / Garbage</p>
+</div>
+
+<div class="service">
+<i class="fa-solid fa-receipt"></i>
+<p>Property Tax</p>
+</div>
+
+<div class="service">
+<i class="fa-solid fa-road"></i>
+<p>Roads & Infrastructure</p>
+</div>
+
+</div>
+
+
+<!-- FORM -->
+
+<div class="form-box">
+
+<label>Complaint Title *</label>
+<input type="text" placeholder="e.g., Low water pressure in Sector 15">
+
+<label>Description *</label>
+<textarea placeholder="Describe the issue in detail..."></textarea>
+
+<label>Location *</label>
+<input type="text" placeholder="e.g., Block C, Sector 15, Near Park">
+
+<button class="location-btn" onclick="getLocation()">
+Use My Live Location
+</button>
+
+<div id="map"></div>
+
+<div class="coords">
+Lat: <span id="lat">Not selected</span> |
+Lng: <span id="lng">Not selected</span>
+</div>
+
+<label>Upload Evidence *</label>
+
+<div class="upload-box">
+
+<input type="file" id="fileUpload">
+
+<label for="fileUpload" class="upload-label">
+
+<i class="fa-solid fa-cloud-arrow-up"></i>
+
+<p>Click to upload image or document</p>
+
+<span>PNG, JPG, PDF allowed</span>
+
+</label>
+
+</div>
+
+<div class="buttons">
+
+    <button class="submit" onclick="submitComplaint()">
+Submit Complaint
+</button>
+
+<button class="cancel">
+Cancel
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* Initialize Map */
+
+var map = L.map('map').setView([20.5937,78.9629],5);
+
+L.tileLayer(
+'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+{
+maxZoom:19
+}
+).addTo(map);
+
+let marker;
+
+/* Get Live Location */
+
+function getLocation(){
+
+if(navigator.geolocation){
+
+navigator.geolocation.getCurrentPosition(function(position){
+
+const lat = position.coords.latitude;
+const lng = position.coords.longitude;
+
+map.setView([lat,lng],15);
+
+if(marker){
+map.removeLayer(marker);
+}
+
+marker = L.marker([lat,lng]).addTo(map);
+
+document.getElementById("lat").innerText = lat;
+document.getElementById("lng").innerText = lng;
+
+});
+
+}
+
+}
+
+/* Select location by clicking */
+
+map.on("click",function(e){
+
+const lat = e.latlng.lat;
+const lng = e.latlng.lng;
+
+if(marker){
+map.removeLayer(marker);
+}
+
+marker = L.marker([lat,lng]).addTo(map);
+
+document.getElementById("lat").innerText = lat;
+document.getElementById("lng").innerText = lng;
+
+});
+
+</script>
+
+<script src="comp.js"></script>
+
+</body>
+</html>

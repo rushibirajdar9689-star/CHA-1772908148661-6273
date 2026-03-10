@@ -1,0 +1,31 @@
+{
+  "name": "tech-sprit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rushibirajdar9689-star/CHA-1772908148661-6273.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/rushibirajdar9689-star/CHA-1772908148661-6273/issues"
+  },
+  "homepage": "https://github.com/rushibirajdar9689-star/CHA-1772908148661-6273#readme",
+  "dependencies": {
+    "@dataconnect/generated": "file:src/dataconnect-generated",
+    "body-parser": "^2.2.2",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "mongoose": "^9.2.4",
+    "multer": "^2.1.1",
+    "mysql2": "^3.19.1"
+  }
+}
