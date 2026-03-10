@@ -1,0 +1,211 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+body{
+background:#e8eaf3;
+}
+
+.container{
+display:flex;
+height:100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+width:240px;
+background:#0f2749;
+color:white;
+padding:20px;
+}
+
+.logo{
+margin-bottom:30px;
+}
+
+.logo i{
+color:orange;
+font-size:22px;
+}
+
+.menu a{
+display:block;
+padding:12px;
+margin:10px 0;
+border-radius:6px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.menu a:hover{
+background:#1c3c6d;
+}
+
+.menu .active{
+background:#1c3c6d;
+color:orange;
+}
+
+/* MAIN */
+
+.main{
+flex:1;
+padding:30px;
+}
+
+/* NAVBAR */
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:30px;
+}
+
+.avatar{
+width:35px;
+height:35px;
+border-radius:50%;
+background:#0f2749;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+/* TITLE */
+
+.title p{
+color:#666;
+margin-top:5px;
+margin-bottom:25px;
+}
+
+/* SERVICES */
+
+.services{
+display:flex;
+gap:15px;
+margin-bottom:30px;
+}
+
+.service{
+background:white;
+padding:20px;
+border-radius:10px;
+width:150px;
+text-align:center;
+cursor:pointer;
+transition:0.3s;
+border:2px solid transparent;
+}
+
+.service:hover{
+transform:translateY(-5px);
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.service.active{
+border-color:orange;
+background:#fff6e5;
+}
+
+/* FORM */
+
+.form-box{
+background:white;
+padding:25px;
+border-radius:10px;
+max-width:700px;
+}
+
+label{
+display:block;
+margin-top:15px;
+margin-bottom:5px;
+font-weight:500;
+}
+
+input,textarea,select{
+width:100%;
+padding:10px;
+border-radius:6px;
+border:1px solid #ddd;
+}
+
+textarea{
+height:100px;
+resize:none;
+}
+
+/* BUTTONS */
+
+.buttons{
+margin-top:20px;
+}
+
+.submit{
+background:orange;
+border:none;
+padding:12px 18px;
+border-radius:6px;
+cursor:pointer;
+margin-right:10px;
+transition:0.3s;
+}
+
+.submit:hover{
+transform:scale(1.05);
+}
+
+.cancel{
+background:#eee;
+border:none;
+padding:12px 18px;
+border-radius:6px;
+cursor:pointer;
+}
+/* FILE UPLOAD */
+
+.upload-box{
+position:relative;
+margin-top:10px;
+}
+
+.upload-box input{
+display:none;
+}
+
+.upload-label{
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+border:2px dashed #ccc;
+border-radius:10px;
+padding:25px;
+cursor:pointer;
+background:#fafafa;
+transition:0.3s;
+text-align:center;
+}
+
+.upload-label i{
+font-size:28px;
+color:orange;
+margin-bottom:10px;
+}
+
+.upload-label:hover{
+border-color:orange;
+background:#fff6e5;
+}
+
+.upload-label span{
+font-size:12px;
+color:#777;
+}
