@@ -43,7 +43,7 @@ track resolutions, and connect with government departments.
 
 <div class="roles">
 
-<button class="role active" data-role="user">👤 Citizen</button>
+<button class="role active" data-role="citizen">👤 Citizen</button>
 <button class="role" data-role="officer">📋 Officer</button>
 <button class="role" data-role="admin">🛡 Admin</button>
 
@@ -54,10 +54,10 @@ track resolutions, and connect with government departments.
 
 <label>Password</label>
 <input id="password" type="password" placeholder="Enter password">
-<a href="citizen_dashboard.html">
-<button id="loginBtn" class="login-btn">
+
+<button id="loginBtn" class="login-btn" onclick="login()">
 Sign In
-</button></a>
+</button>
 
 <p class="demo">
 Demo mode — any credentials will work

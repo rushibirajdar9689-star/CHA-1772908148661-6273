@@ -1,3 +1,23 @@
+let selectedRole = "citizen"
+
+/* ROLE BUTTON SELECTION */
+
+document.querySelectorAll(".role").forEach(btn => {
+
+btn.addEventListener("click", function(){
+
+document.querySelectorAll(".role").forEach(b=>b.classList.remove("active"))
+
+this.classList.add("active")
+
+selectedRole = this.dataset.role
+
+})
+
+})
+
+/* LOGIN FUNCTION */
+
 async function login(){
 
 const email = document.getElementById("email").value
@@ -31,16 +51,41 @@ const data = await res.json()
 
 if(data.success){
 
-/* SAVE USER INFO FOR OTHER PAGES */
+/* CHECK ROLE */
+
+if(selectedRole !== data.role){
+
+alert("Incorrect role selected")
+return
+
+}
+
+/* SAVE USER INFO */
 
 localStorage.setItem("username", data.name)
 localStorage.setItem("useremail", data.email)
+localStorage.setItem("role", data.role)
+localStorage.setItem("department", data.department)
 
 alert("Login successful")
 
-/* REDIRECT TO DASHBOARD */
+/* REDIRECT */
 
-window.location.href="citizen_dashboard.html"
+if(data.role === "admin" ){
+
+window.location.href = "admin.html"
+
+}
+if(data.role === "officer" ){
+
+window.location.href = "off.html"
+}
+
+else{
+
+window.location.href = "admin.html"
+
+}
 
 }
 else{

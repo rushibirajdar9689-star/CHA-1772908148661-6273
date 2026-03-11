@@ -60,4 +60,40 @@ bell.style.transform="rotate(0deg)"
 
 })
 
- 9fa6ed55d6871ed8ba7210602deb0d85da4f0761
+async function loadDepartmentAnalysis(){
+
+const response = await fetch("/department-summary")
+const data = await response.json()
+
+const departments = data.map(d => d.department)
+const totals = data.map(d => d.total)
+const resolved = data.map(d => d.resolved)
+
+const ctx = document.getElementById("departmentChart")
+
+new Chart(ctx, {
+
+type: "bar",
+
+data: {
+
+labels: departments,
+
+datasets: [
+{
+label: "Total Complaints",
+data: totals
+},
+{
+label: "Resolved Complaints",
+data: resolved
+}
+]
+
+}
+
+})
+
+}
+
+loadDepartmentAnalysis()

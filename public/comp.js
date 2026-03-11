@@ -10,6 +10,23 @@ alert("File uploaded: " + fileInput.files[0].name)
 
 })
 
+const mongoose = require("mongoose")
+
+const ComplaintSchema = new mongoose.Schema({
+    department: String,
+    title: String,
+    description: String,
+    status: {
+        type: String,
+        default: "pending"
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
+})
+
+module.exports = mongoose.model("Complaint", ComplaintSchema)
 
 
 /* SERVICE SELECTION */
